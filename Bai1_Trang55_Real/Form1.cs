@@ -28,6 +28,12 @@ namespace Bai1_Trang55_Real
             }
             txtThang.MaxLength = 2;
             txtNam.MaxLength = 4;
+
+            if (e.KeyChar==13)
+            {
+				btnKetQua_Click(sender, e);
+
+			}    
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -49,8 +55,7 @@ namespace Bai1_Trang55_Real
 
         private void btnKetQua_Click(object sender, EventArgs e)
         {
-            thang = Convert.ToInt32(txtThang.Text);
-            if(thang <1 || thang >12)
+            if(txtThang.Text == string.Empty || Convert.ToInt32(txtThang.Text) < 1 || Convert.ToInt32(txtThang.Text) > 12)
             {
                 MessageBox.Show("Nhập tháng từ 1 -> 12 !");
                 txtThang.Text = String.Empty;
@@ -58,8 +63,7 @@ namespace Bai1_Trang55_Real
                 return;
             }
 
-            nam = Convert.ToInt32(txtNam.Text);
-            if (nam <1000 || nam>9999)
+            if (txtNam.Text==string.Empty || Convert.ToInt32(txtNam.Text) < 1000 || Convert.ToInt32(txtNam.Text) > 9999)
             {
                 MessageBox.Show("Nhập năm trong [1000,9999]");
                 txtNam.Text = String.Empty;
@@ -67,7 +71,7 @@ namespace Bai1_Trang55_Real
                 return;
             }
 
-            lblKetQua.Text = "Tháng " + thang + " năm " + nam + " có " + DateTime.DaysInMonth(nam,thang);
+            lblKetQua.Text = "Tháng " + Convert.ToInt32(txtThang.Text) + " năm " + Convert.ToInt32(txtNam.Text) + " có " + DateTime.DaysInMonth(Convert.ToInt32(txtNam.Text), Convert.ToInt32(txtThang.Text));
         }
     }
 }
